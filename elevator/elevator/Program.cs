@@ -10,7 +10,7 @@ List<int> getavailablemoves() {
 };
 List<int> GetAnswer(int _verdieping){
 	int verdieping = _verdieping;
-	return new List<int> { 0, 0};
+	return new List<int> { 0};
 };
 
 #region setup

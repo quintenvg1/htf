@@ -17,17 +17,20 @@ var puzzleUrl = "api/path/2/easy/Puzzle";
 var puzzleGetResponse = await client.GetStringAsync(puzzleUrl);
 
 Console.WriteLine(sampleGetResponse);
-Datum(1, sampleGetResponse);
+Datum(10, sampleGetResponse);
 Datum1 = Date;
-Datum(1, sampleGetResponse);
+Datum(37, sampleGetResponse);
 Datum2 = Date;
+var dateinseconds = (Datum2 - Datum1).TotalSeconds; //*-1;
+if (dateinseconds < 0) {
+    dateinseconds *= -1;
+}
 
-var dateinseconds = (Datum2 - Datum1).TotalSeconds *-1;
 Console.WriteLine(dateinseconds);
 
-var samplePostResponse = await client.PostAsJsonAsync<int>(sampleUrl, Convert.ToInt32(dateinseconds));
+var samplePostResponse = await client.PostAsJsonAsync<long>(sampleUrl, ((long)dateinseconds));
 var samplePostResponseValue = await samplePostResponse.Content.ReadAsStringAsync();
-var puzzlePostResponse = await client.PostAsJsonAsync<int>(sampleUrl, Convert.ToInt32(dateinseconds));
+var puzzlePostResponse = await client.PostAsJsonAsync<long>(puzzleUrl, ((long)dateinseconds));
 var puzzlePostResponseValue = await samplePostResponse.Content.ReadAsStringAsync();
 
 //var puzzlePostResponse = await client.PostAsJsonAsync<int>(puzzleUrl, Convert.ToInt32(dateinseconds));
@@ -39,10 +42,13 @@ void Datum(int teller, string datum)
     var Day = "";
     var Month = "";
     var Year = "";
+    var hour = "";
+    var minute = "";
+    var second = "";
 
     for (int i = 0; i < 4; i++)
     {
-        string datedeel = date.Substring(1, 4);
+        string datedeel = date.Substring(teller, 4);
         string dateCheck = date.Substring(teller + 2, 2);
         teller += 4;
 
@@ -69,6 +75,8 @@ void Datum(int teller, string datum)
 
     Console.WriteLine(Day + " " + Month + " " + Year);
     var fulldatum = Day + "/" + Month + "/" + Year;
+    Console.WriteLine(fulldatum);
+    Console.ReadLine();
     var dateTime = DateTime.Parse(fulldatum);
     Console.WriteLine(dateTime);
     Date = dateTime;
