@@ -62,6 +62,9 @@ Console.ReadLine();
 */
 //api url /api/path/1/easy/Puzzle
 //code to get data from the api
+
+
+
 var puzzleUrl = "api/path/1/easy/Puzzle";
 var puzzleGetResponse = await client.GetFromJsonAsync<List<int>>(puzzleUrl);
 var puzzleAnswer = GetAnswer(puzzleGetResponse);
