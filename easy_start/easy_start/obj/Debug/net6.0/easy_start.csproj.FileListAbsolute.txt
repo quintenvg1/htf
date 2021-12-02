@@ -1,0 +1,15 @@
+D:\documenten\easy_start\easy_start\bin\Debug\net6.0\easy_start.exe
+D:\documenten\easy_start\easy_start\bin\Debug\net6.0\easy_start.deps.json
+D:\documenten\easy_start\easy_start\bin\Debug\net6.0\easy_start.runtimeconfig.json
+D:\documenten\easy_start\easy_start\bin\Debug\net6.0\easy_start.dll
+D:\documenten\easy_start\easy_start\bin\Debug\net6.0\ref\easy_start.dll
+D:\documenten\easy_start\easy_start\bin\Debug\net6.0\easy_start.pdb
+D:\documenten\easy_start\easy_start\obj\Debug\net6.0\easy_start.csproj.AssemblyReference.cache
+D:\documenten\easy_start\easy_start\obj\Debug\net6.0\easy_start.GeneratedMSBuildEditorConfig.editorconfig
+D:\documenten\easy_start\easy_start\obj\Debug\net6.0\easy_start.AssemblyInfoInputs.cache
+D:\documenten\easy_start\easy_start\obj\Debug\net6.0\easy_start.AssemblyInfo.cs
+D:\documenten\easy_start\easy_start\obj\Debug\net6.0\easy_start.csproj.CoreCompileInputs.cache
+D:\documenten\easy_start\easy_start\obj\Debug\net6.0\easy_start.dll
+D:\documenten\easy_start\easy_start\obj\Debug\net6.0\ref\easy_start.dll
+D:\documenten\easy_start\easy_start\obj\Debug\net6.0\easy_start.pdb
+D:\documenten\easy_start\easy_start\obj\Debug\net6.0\easy_start.genruntimeconfig.cache
