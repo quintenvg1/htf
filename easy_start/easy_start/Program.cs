@@ -3,27 +3,37 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 
 
+int cijfersom(int cijfer) {
+	int n, sum = 0, m;
+	n = cijfer;
+	while (n > 0)
+	{
+		m = n % 10;
+		sum = sum + m;
+		n = n / 10;
+	}
+	return sum;
+}
+
 
 int GetAnswer(List<int> cijfer) {
 	int resultaat = 0;
 	foreach (int item in cijfer){
 		Console.WriteLine(item);
 	resultaat += item;
+		Console.WriteLine("result " + resultaat);
 	};
-	//splits resultaat todat je 1 beduidend cijfer krijgt
-	string strresultaat = resultaat.ToString();
-	while(strresultaat.Length != 1){ 
-		for(int x = 0; x < strresultaat.Length; x++)
-		{
-			resultaat += Convert.ToInt32(strresultaat[x]);
-			Console.WriteLine("resultaat " + resultaat);
-		}
-		strresultaat = resultaat.ToString();
-	//done
+	//resultaat = som van alle cijfers
+	while (Convert.ToString(resultaat).Length >= 2)
+	{
+		resultaat = cijfersom(resultaat);
+		Console.WriteLine(resultaat);
 	}
-	Console.WriteLine(resultaat);
+	//gebruik cijfersom
 	return resultaat;
 };
+
+
 
 
 
@@ -35,7 +45,7 @@ var token = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiNDEiLCJuYmYiOjE2Mz
 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 var startUrl = "api/path/1/easy/Start";
 var startResponse = await client.GetAsync(startUrl);
-
+/*
 var sampleUrl = "api/path/1/easy/Sample";
 var sampleGetResponse = await client.GetFromJsonAsync<List<int>>(sampleUrl);
 var sampleAnswer = GetAnswer(sampleGetResponse);
@@ -46,7 +56,15 @@ var puzzleGetResponse = await client.GetFromJsonAsync<List<int>>(puzzleUrl);
 var puzzleAnswer = GetAnswer(puzzleGetResponse);
 var puzzlePostResponse = await client.PostAsJsonAsync<int>(sampleUrl, puzzleAnswer);
 var puzzlePostResponseValue = await samplePostResponse.Content.ReadAsStringAsync();
-Console.WriteLine(sampleAnswer);
+Console.WriteLine(puzzleAnswer);
+Console.WriteLine("press enter to leave or not");
 Console.ReadLine();
+*/
 //api url /api/path/1/easy/Puzzle
 //code to get data from the api
+var puzzleUrl = "api/path/1/easy/Puzzle";
+var puzzleGetResponse = await client.GetFromJsonAsync<List<int>>(puzzleUrl);
+var puzzleAnswer = GetAnswer(puzzleGetResponse);
+var puzzlePostResponse = await client.PostAsJsonAsync<int>(puzzleUrl, puzzleAnswer);
+var puzzlePostResponseValue = await puzzlePostResponse.Content.ReadAsStringAsync();
+Console.WriteLine("answer posted");
