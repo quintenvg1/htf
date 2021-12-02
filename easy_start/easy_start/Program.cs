@@ -5,11 +5,24 @@ using System.Net.Http.Json;
 
 
 int GetAnswer(List<int> cijfer) {
-	int resultaat
+	int resultaat = 0;
 	foreach (int item in cijfer){
 		Console.WriteLine(item);
+	resultaat += item;
 	};
-	return 1; 
+	//splits resultaat todat je 1 beduidend cijfer krijgt
+	string strresultaat = resultaat.ToString();
+	while(strresultaat.Length != 1){ 
+		for(int x = 0; x < strresultaat.Length; x++)
+		{
+			resultaat += Convert.ToInt32(strresultaat[x]);
+			Console.WriteLine("resultaat " + resultaat);
+		}
+		strresultaat = resultaat.ToString();
+	//done
+	}
+	Console.WriteLine(resultaat);
+	return resultaat;
 };
 
 
@@ -22,6 +35,7 @@ var token = "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiNDEiLCJuYmYiOjE2Mz
 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 var startUrl = "api/path/1/easy/Start";
 var startResponse = await client.GetAsync(startUrl);
+
 var sampleUrl = "api/path/1/easy/Sample";
 var sampleGetResponse = await client.GetFromJsonAsync<List<int>>(sampleUrl);
 var sampleAnswer = GetAnswer(sampleGetResponse);
@@ -32,7 +46,7 @@ var puzzleGetResponse = await client.GetFromJsonAsync<List<int>>(puzzleUrl);
 var puzzleAnswer = GetAnswer(puzzleGetResponse);
 var puzzlePostResponse = await client.PostAsJsonAsync<int>(sampleUrl, puzzleAnswer);
 var puzzlePostResponseValue = await samplePostResponse.Content.ReadAsStringAsync();
-
+Console.WriteLine(sampleAnswer);
+Console.ReadLine();
 //api url /api/path/1/easy/Puzzle
-
 //code to get data from the api
